@@ -196,7 +196,7 @@ class LoadController extends Controller
             Session::put('red',1);
             return redirect()->back()->withErrors(["Oops, An Error occured, Please try it later."]);
         }
-        dd($to_use_pins);
+
     }
 
     public function showResults(Request $request,$campaign_id){
@@ -204,7 +204,7 @@ class LoadController extends Controller
         $positions = $this->election_campaign->getContestants($campaign_id);
         $votes = Votes::where('campaign_id',$campaign_id)->get();
         $unique_votes_count = $votes->unique('pin_id')->count();
-        return view('admin.results',['title'=>"Results for ".$camp->name,'positions'=>$positions,'total_votes' => $unique_votes_count]);
+        return view('admin.results',['title'=>"Results for ".$camp->name,'positions'=>$positions,'total_votes' => $unique_votes_count,'campaign'=>$campaign_id]);
     }
 
     public function vote(Request $request){

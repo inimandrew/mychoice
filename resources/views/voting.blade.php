@@ -49,7 +49,7 @@ option{
                         <div class="wrap-input100 validate-input m-b-36" data-validate = "Pin is required">
                             <select class="input100" name="votes[]" required >
                                     <option value="">Select a Contestant</option>
-                                @foreach ($position->contestants as $contestant)
+                                @foreach ($position->contestants->where('campaign_id',$campaign) as $contestant)
                                     <option value="{{$contestant->id}}">{{$contestant->firstname}} {{$contestant->lastname}} - {{$contestant->department}}</option>
                                 @endforeach
                             </select>

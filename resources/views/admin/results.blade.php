@@ -15,7 +15,7 @@
             <table class="table table-borderless table-hover">
 
                 <tbody>
-                        @foreach ($position->contestants as $contestant)
+                        @foreach ($position->contestants->where('campaign_id',$campaign) as $contestant)
                     <tr style="color:black;font-weight:bold;">
                         <td>{{$contestant->firstname}}</td>
                         <td>{{$contestant->lastname}}</td>
